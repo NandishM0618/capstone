@@ -1,0 +1,32 @@
+# version: "3.9"   # optional, since Compose v2 doesn’t require version
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://nandish1729_db_user:dPszBg2xnwmnQXNW@blogapp.ztflouk.mongodb.net/blog-app?retryWrites=true&w=majority
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
