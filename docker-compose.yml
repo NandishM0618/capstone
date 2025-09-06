@@ -15,7 +15,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - MONGO_URI=mongodb+srv://nandish1729_db_user:pass@blogapp.ztflouk.mongodb.net/blog-app?retryWrites=true&w=majority
+      - MONGO_URI=mongodb+srv://nandish1729_db_user:pass@blogapp.dns.mongodb.net/blog-app?retryWrites=true&w=majority
     depends_on:
       - mongo
 
