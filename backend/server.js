@@ -16,8 +16,9 @@ const options = {
     origin: "http://localhost:3000",
     credentials: true
 }
-const mongoUri = process.env.MONGO_URI;
+
 dotenv.config({ path: path.resolve(__dirname, ".env") });
+const mongoUri = process.env.MONGO_URI;
 const PORT = process.env.PORT || 3000;
 
 mongoose.connect(mongoUri, {
