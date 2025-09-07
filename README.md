@@ -1,6 +1,6 @@
 # Blog Platform Capstone Project
 
-A full-stack blogging platform with CI/CD pipelines, Docker containerization, and optional Kubernetes orchestration. Users can create, view, update, and delete posts. The project demonstrates modern DevOps practices, containerization, and cloud database integration.
+A full-stack blogging platform with CI/CD pipelines, Docker containerization, and Kubernetes orchestration. Users can create, view, update, and delete posts. The project demonstrates modern DevOps practices, containerization, and cloud database integration.
 
 <img width="1907" height="938" alt="project-blog-pic" src="https://github.com/user-attachments/assets/f9cc2012-36b2-476b-906a-4577b61b0dc5" />
 
