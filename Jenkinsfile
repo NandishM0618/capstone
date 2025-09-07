@@ -2,8 +2,9 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('jenkins_docker') // create this in Jenkins
+        DOCKERHUB_CREDENTIALS = credentials('jenkins_docker')
         DOCKERHUB_REPO = 'nandishm/blog-api'
+        MONGO_URI = credentials('jenkins_mongo_uri')
     }
 
     stages {
