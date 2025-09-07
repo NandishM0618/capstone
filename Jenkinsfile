@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('jenkins_docker')
         DOCKERHUB_REPO = 'nandishm/blog-api'
         MONGO_URI = credentials('jenkins_mongo_uri')
     }
@@ -33,17 +32,20 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                script {
+                withCredentials([usernamePassword(credentialsId: 'jenkins_docker', 
+                                          usernameVariable: 'DOCKERHUB_USER', 
+                                          passwordVariable: 'DOCKERHUB_PASS')]) {
                     sh """
-                    docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW
-                    docker tag backend $DOCKERHUB_REPO:backend
-                    docker tag frontend $DOCKERHUB_REPO:frontend
-                    docker push $DOCKERHUB_REPO:backend
-                    docker push $DOCKERHUB_REPO:frontend
+                        echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
+                        docker tag vagrant-backend $DOCKERHUB_REPO:backend
+                        docker tag vagrant-frontend $DOCKERHUB_REPO:frontend
+                        docker push $DOCKERHUB_REPO:backend
+                        docker push $DOCKERHUB_REPO:frontend
                     """
                 }
             }
         }
+
     }
 
     post {
