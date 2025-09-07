@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('jenkins_docker') // create this in Jenkins
+        DOCKERHUB_CREDENTIALS = credentials('jenkins_docker') 
         DOCKERHUB_REPO = 'nandishm/blog-api'
     }
 
@@ -18,7 +18,7 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    sh 'docker compose build'
+                    sh 'docker compose -p jenkins_blogapi build'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Run Containers') {
             steps {
                 script {
-                    sh 'docker compose up -d'
+                   sh 'docker compose -p jenkins_blogapi build'
                 }
             }
         }
