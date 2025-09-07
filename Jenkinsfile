@@ -18,7 +18,7 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    sh 'docker compose -p build'
+                    sh 'docker compose build'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Run Containers') {
             steps {
                 script {
-                   sh 'docker compose -p build'
+                   sh 'docker compose up -d'
                 }
             }
         }
